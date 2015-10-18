@@ -8,6 +8,11 @@ HashKnownHosts yes
 
 
 
+# Allows easily connecting to Tor hidden services
+Host *.onion
+	ProxyCommand nc -X 5 -x localhost:9050 %h %p
+	#ProxyCommand socat - SOCKS4A:localhost:%h:%p,socksport=9050
+
 ### Default configuration
 Host *
 	# Host keys the client accepts - order here is honored by OpenSSH
